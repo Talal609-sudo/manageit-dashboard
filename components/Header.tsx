@@ -102,7 +102,7 @@ export default function Header() {
 
         {/* MOBILE PANEL below nav */}
         <div className="md:hidden absolute left-0 right-0 top-full z-20 px-2 sm:px-4">
-          <MobileNav open={menuOpen} setOpen={setMenuOpen} nav={nav} />
+          <MobileNav open={menuOpen} nav={nav} />
         </div>
       </nav>
     </header>
