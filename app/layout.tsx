@@ -1,6 +1,7 @@
-import type { Metadata } from 'next'
-import './globals.css'
-import Header from '@/components/Header'
+// app/layout.tsx
+import type { Metadata } from 'next';
+import './globals.css';
+import Header from '@/components/Header';
 
 export const metadata: Metadata = {
   title: 'ManageIt — Admin Dashboard',
@@ -16,19 +17,23 @@ export const metadata: Metadata = {
     title: 'ManageIt — Admin Dashboard',
     description: 'Colorful, accessible admin dashboard UI (portfolio project).',
     images: ['/og.png'],
-  }
-}
+  },
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body>
+    // Start in dark mode on first paint
+    <html lang="en" className="dark">
+      {/* Flex layout so footer stays inside; bottom padding to avoid clipping */}
+      <body className="min-h-[100dvh] flex flex-col pb-14 md:pb-16">
         <Header />
-        <main id="main" className="container my-6">{children}</main>
-        <footer className="container mb-8">
-          <div className="card px-4 py-4 text-sm text-black/70 dark:text-white/70">© {new Date().getFullYear()} ManageIt.</div>
+        <main id="main" className="container my-6 flex-1">{children}</main>
+        <footer className="container mt-15 md:mt-17">
+          <p className="px-2 py-3 md:py-4 text-center text-sm text-black/65 dark:text-white/65">
+            © {new Date().getFullYear()} ManageIt.
+          </p>
         </footer>
       </body>
     </html>
-  )
+  );
 }

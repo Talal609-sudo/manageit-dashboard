@@ -1,114 +1,163 @@
-export default function SettingsPage(){
+// app/settings/page.tsx
+export default function SettingsPage() {
   return (
-    <div className="grid md:grid-cols-[260px_1fr] gap-4">
-      <aside className="card p-4 h-fit" aria-label="Settings sections">
-        <h2 className="text-sm font-semibold mb-3">Sections</h2>
-        <ul className="space-y-2">
-          {['Account','Preferences','Notifications','Security','Billing','Invoices','API keys','Danger zone'].map(s => (
-            <li key={s}><button className="w-full text-left btn btn-ghost border border-brand-border">{s}</button></li>
-          ))}
-        </ul>
-      </aside>
+    <div className="space-y-6">
+      {/* Page intro */}
+      <header className="card p-4">
+        <h1 className="text-lg font-semibold">Settings</h1>
+        <p className="text-sm text-black/70 dark:text-white/70">
+          Manage your account, security, notifications, billing, and more.
+        </p>
+      </header>
 
-      <div className="space-y-4">
-        <section className="card p-4">
-          <h2 className="text-sm font-semibold mb-3">Account</h2>
-          <div className="grid md:grid-cols-3 gap-3">
-            <div className="md:col-span-2">
-              <label className="text-sm text-black/70 dark:text-white/70">Full name</label>
-              <input className="w-full rounded-xl border border-brand-border px-3 py-2 bg-white dark:bg-[color:var(--panel)]" defaultValue="Talal" />
+      {/* Collapsible settings cards */}
+      <section className="grid gap-4 lg:grid-cols-2">
+        {/* Account */}
+        <details className="card p-4" open>
+          <summary className="cursor-pointer text-sm font-semibold">Account</summary>
+          <form className="mt-3 grid gap-3 sm:grid-cols-2" aria-label="Account settings">
+            <label className="block">
+              <span className="text-sm text-black/70 dark:text-white/70">Full name</span>
+              <input className="mt-1 w-full rounded-xl border border-brand-border px-3 py-2 bg-white dark:bg-[color:var(--panel)]" placeholder="Your name" />
+            </label>
+            <label className="block">
+              <span className="text-sm text-black/70 dark:text-white/70">Email</span>
+              <input type="email" className="mt-1 w-full rounded-xl border border-brand-border px-3 py-2 bg-white dark:bg-[color:var(--panel)]" placeholder="you@example.com" />
+            </label>
+            <div className="sm:col-span-2">
+              <button className="btn btn-primary">Save changes</button>
             </div>
-            <div>
-              <label className="text-sm text-black/70 dark:text-white/70">Email</label>
-              <input className="w-full rounded-xl border border-brand-border px-3 py-2 bg-white dark:bg-[color:var(--panel)]" defaultValue="talal@example.com" />
-            </div>
-          </div>
-          <div className="mt-3"><button className="btn btn-primary">Save changes</button></div>
-        </section>
+          </form>
+        </details>
 
-        <section className="card p-4">
-          <h2 className="text-sm font-semibold mb-3">Notifications</h2>
-          <ul className="divide-y divide-brand-border">
+        {/* Security */}
+        <details className="card p-4">
+          <summary className="cursor-pointer text-sm font-semibold">Security</summary>
+          <form className="mt-3 grid gap-3" aria-label="Security settings">
+            <div className="grid gap-3 sm:grid-cols-3">
+              <label className="block">
+                <span className="text-sm text-black/70 dark:text-white/70">Current password</span>
+                <input type="password" className="mt-1 w-full rounded-xl border border-brand-border px-3 py-2 bg-white dark:bg-[color:var(--panel)]" />
+              </label>
+              <label className="block">
+                <span className="text-sm text-black/70 dark:text-white/70">New password</span>
+                <input type="password" className="mt-1 w-full rounded-xl border border-brand-border px-3 py-2 bg-white dark:bg-[color:var(--panel)]" />
+              </label>
+              <label className="block">
+                <span className="text-sm text-black/70 dark:text-white/70">Confirm new</span>
+                <input type="password" className="mt-1 w-full rounded-xl border border-brand-border px-3 py-2 bg-white dark:bg-[color:var(--panel)]" />
+              </label>
+            </div>
+
+            <label className="inline-flex items-center gap-2">
+              <input type="checkbox" className="h-4 w-4 rounded border-brand-border" />
+              <span className="text-sm">Enable two-factor authentication</span>
+            </label>
+
+            <div className="flex gap-2">
+              <button className="btn btn-primary">Update password</button>
+              <button className="btn btn-ghost border border-brand-border">Sign out all sessions</button>
+            </div>
+          </form>
+        </details>
+
+        {/* Notifications */}
+        <details className="card p-4">
+          <summary className="cursor-pointer text-sm font-semibold">Notifications</summary>
+          <fieldset className="mt-3 grid gap-2" aria-label="Notification preferences">
+            <label className="inline-flex items-center gap-2">
+              <input type="checkbox" className="h-4 w-4 rounded border-brand-border" defaultChecked />
+              <span className="text-sm">Weekly email reports</span>
+            </label>
+            <label className="inline-flex items-center gap-2">
+              <input type="checkbox" className="h-4 w-4 rounded border-brand-border" />
+              <span className="text-sm">Product updates</span>
+            </label>
+            <label className="inline-flex items-center gap-2">
+              <input type="checkbox" className="h-4 w-4 rounded border-brand-border" />
+              <span className="text-sm">Marketing emails</span>
+            </label>
+            <div className="mt-2">
+              <button className="btn btn-primary">Save preferences</button>
+            </div>
+          </fieldset>
+        </details>
+
+        {/* Billing (simple) */}
+        <details className="card p-4" open>
+          <summary className="cursor-pointer text-sm font-semibold">Billing</summary>
+          <fieldset className="mt-3 grid gap-2" aria-label="Billing plan">
+            <label className="inline-flex items-center gap-2">
+              <input type="radio" name="plan" className="h-4 w-4" defaultChecked />
+              <span className="text-sm">Basic — $9/mo</span>
+            </label>
+            <label className="inline-flex items-center gap-2">
+              <input type="radio" name="plan" className="h-4 w-4" />
+              <span className="text-sm">Pro — $19/mo</span>
+            </label>
+            <label className="inline-flex items-center gap-2">
+              <input type="radio" name="plan" className="h-4 w-4" />
+              <span className="text-sm">Business — $49/mo</span>
+            </label>
+            <div className="mt-2">
+              <button className="btn btn-primary">Update plan</button>
+            </div>
+          </fieldset>
+        </details>
+
+        {/* Invoices (very simple) */}
+        <details className="card p-4">
+          <summary className="cursor-pointer text-sm font-semibold">Invoices</summary>
+          <ul className="mt-3 divide-y divide-black/10 dark:divide-white/10">
             {[
-              ['Email alerts','Orders, payouts and product updates.',true],
-              ['SMS alerts','Delivery updates via SMS.',false],
-              ['Push notifications','Realtime notifications in browser.',true],
-            ].map(([label,desc,on]) => (
-              <li key={label as string} className="flex items-center justify-between py-3">
-                <div>
-                  <div className="text-sm">{label}</div>
-                  <div className="text-sm text-black/70 dark:text-white/70">{desc}</div>
+              ['Aug 12, 2025', '#INV-1041', '$19.00', 'Paid'],
+              ['Jul 12, 2025', '#INV-1040', '$19.00', 'Paid'],
+              ['Jun 12, 2025', '#INV-1039', '$19.00', 'Paid'],
+            ].map(([date, code, amt, status]) => (
+              <li key={code as string} className="py-3 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <span className="text-sm">{date}</span>
+                  <span className="text-sm text-blue-600 dark:text-blue-400">{code}</span>
+                  <span className="text-sm">{amt}</span>
+                  <span className="badge bg-emerald-100 text-emerald-700 dark:bg-emerald-400/10 dark:text-emerald-300">
+                    {status}
+                  </span>
                 </div>
-                <button className="btn btn-ghost border border-brand-border" aria-pressed={Boolean(on)}>{on ? 'On' : 'Off'}</button>
+                <button className="btn btn-ghost border border-brand-border">Download</button>
               </li>
             ))}
           </ul>
-        </section>
+          <div className="mt-3">
+            <button className="btn btn-primary">Download all</button>
+          </div>
+        </details>
 
-        <section className="card p-4">
-          <h2 className="text-sm font-semibold mb-3">Security</h2>
-          <div className="space-y-4">
-            <div>
-              <div className="text-sm">Two‑factor authentication</div>
-              <div className="text-sm text-black/70 dark:text-white/70">Add an extra layer of security to your account.</div>
-              <div className="mt-2"><button className="btn btn-primary">Enable 2FA</button></div>
+        {/* API & Danger zone (compact) */}
+        <details className="card p-4">
+          <summary className="cursor-pointer text-sm font-semibold">API & Danger zone</summary>
+          <div className="mt-3 grid gap-3">
+            <label className="block">
+              <span className="text-sm text-black/70 dark:text-white/70">API key</span>
+              <div className="mt-1 flex items-center gap-2">
+                <input
+                  readOnly
+                  value="sk_live_••••••••••••••••••••"
+                  className="w-full rounded-xl border border-brand-border px-3 py-2 bg-white dark:bg-[color:var(--panel)]"
+                  aria-label="API key (masked)"
+                />
+                <button className="btn btn-ghost border border-brand-border">Copy</button>
+              </div>
+            </label>
+            <div className="rounded-xl bg-black/5 dark:bg-white/5 p-3">
+              <h3 className="text-sm font-semibold text-red-500">Danger zone</h3>
+              <p className="text-sm text-black/70 dark:text-white/70">
+                Deleting your account removes all data permanently.
+              </p>
+              <button className="mt-2 btn btn-ghost border border-brand-border">Delete account</button>
             </div>
-            <hr className="border-brand-border" />
-            <div className="flex items-center justify-between gap-3">
-              <div className="rounded-xl bg-black/5 dark:bg-white/5 px-3 py-2 text-sm">Chrome · Linux · Lahore · Now</div>
-              <button className="btn btn-ghost border border-brand-border">Sign out all</button>
-            </div>
           </div>
-        </section>
-
-        <section className="card p-4">
-          <h2 className="text-sm font-semibold mb-3">Billing</h2>
-          <div className="flex flex-wrap items-end gap-3">
-            <div className="badge bg-indigo-100 text-indigo-700 dark:bg-indigo-400/10 dark:text-indigo-300">Pro — $19/mo</div>
-            <button className="btn btn-primary">Change plan</button>
-          </div>
-          <div className="mt-3 grid md:grid-cols-[1fr_auto] gap-3 items-center">
-            <div className="rounded-xl border border-brand-border px-3 py-2">Visa •••• 4242 · 12/27</div>
-            <button className="btn btn-ghost border border-brand-border">Update card</button>
-          </div>
-        </section>
-
-        <section className="card p-4">
-          <h2 className="text-sm font-semibold mb-3">Invoices</h2>
-          <div className="overflow-x-auto">
-            <table className="table">
-              <thead><tr><th>Date</th><th>Invoice</th><th>Amount</th><th>Status</th><th>Actions</th></tr></thead>
-              <tbody>
-                {['Aug 12, 2025','#INV-1041','$19.00','Paid','Download',
-                  'Jul 12, 2025','#INV-1040','$19.00','Paid','Download',
-                  'Jun 12, 2025','#INV-1039','$19.00','Paid','Download',
-                  'May 12, 2025','#INV-1038','$19.00','Paid','Download'].reduce((acc,_,i,arr)=>{
-                  if(i%5===0){
-                    acc.push([arr[i],arr[i+1],arr[i+2],arr[i+3],<button key={i} className="btn btn-ghost">Download</button>])
-                  }
-                  return acc
-                },[] as any[])}
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section className="card p-4">
-          <h2 className="text-sm font-semibold mb-3">API keys</h2>
-          <div className="grid md:grid-cols-[1fr_auto] gap-3 items-center">
-            <div className="rounded-xl border border-brand-border px-3 py-2">sk_live_••••_c17a9b</div>
-            <button className="btn btn-ghost border border-brand-border">Regenerate</button>
-          </div>
-        </section>
-
-        <section className="card p-4">
-          <h2 className="text-sm font-semibold mb-3">Danger zone</h2>
-          <div className="flex items-center justify-between gap-3">
-            <p className="text-sm text-black/70 dark:text-white/70">Delete your account and all data. This action is irreversible.</p>
-            <button className="btn bg-red-600 text-white hover:bg-red-700">Delete account</button>
-          </div>
-        </section>
-      </div>
+        </details>
+      </section>
     </div>
-  )
+  );
 }

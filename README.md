@@ -1,42 +1,52 @@
-# ManageIt — Admin Dashboard
+ManageIt — Admin Dashboard
 
-A colorful, accessible, and responsive admin dashboard UI built with Next.js (App Router), React, TypeScript, and Tailwind CSS.
+A colorful, accessible, mobile-first admin dashboard showcasing best practices for responsive UI, accessibility, and clean React/Next.js architecture.
 
-## Live demo
-https://your-vercel-url.vercel.app
+Live Demo
 
-## Preview
-![Desktop](./screenshots/preview-desktop.png)
-![Mobile 1](./screenshots/preview-mobile-1.png)
-![Mobile 2](./screenshots/preview-mobile-2.png)
+Vercel: add your link here
 
-## Overview
-ManageIt showcases a production-style dashboard with real-world UX patterns:
-- Overview — KPI cards, revenue area chart, category bars, top products, regions.
-- Orders — searchable, paginated table + CSV export button.
-- Customers — customer table with quick actions.
-- Reports — filters (date/compare/channel) + charts and summaries.
-- Settings — sidebar navigation, Account, Notifications, Security (2FA & sessions), Billing, Invoices, API keys, Danger zone.
+Preview
 
-## Features
-- Accessibility-first: semantic landmarks, skip link, strong focus styles, good contrast.
-- Responsive: mobile → desktop layouts, mobile nav menu.
-- Dark mode: toggle ON/OFF.
-- Lightweight charts: accessible SVG components (no heavy libs).
-- Reusable tables: semantic `<table>` with zebra rows and captions.
-- Clean code: comments and clear structure.
+![Desktop](screenshots/preview-desktop.png)
+![Mobile 1](screenshots/preview-mobile-1.png)
+![Mobile 2](screenshots/preview-mobile-2.png)
 
-## Tech stack
-- Next.js 14 (App Router)
-- React 18
-- TypeScript
-- Tailwind CSS
-- clsx
+Overview
 
-## Getting started (local)
-```bash
-git clone https://github.com/Talal609-sudo/manageit-dashboard.git
+ManageIt is a demo admin UI built for your portfolio. It focuses on:
+
+*Clean, minimal, multi-page layout: Overview, Orders, Customers, Reports, Settings.
+*Accessible patterns (skip links, aria-labels, keyboard-friendly controls)
+*Responsive design (desktop grid/table → mobile cards)
+*Dark-mode by default with a user toggle.
+
+Features
+
+*Header & Nav: brand left, centered menu on desktop, theme toggle + avatar right; working mobile menu (hamburger).
+*Overview: KPI cards, charts (placeholders/components), tidy layout.
+*Orders (New layout): filter pills, channel select, search + sort, card-based list (no clipped columns on mobile).
+*Customers (New layout): filter pills + search, responsive grid cards with quick actions (Email, Coupon).
+*Reports: spacing-tuned filters, clean visual sections.
+*Settings (Unique): compact accordion sections, simple Invoices list.
+*OG image: public/og.png for social preview cards.
+
+Tech Stack
+
+*Next.js (App Router), React, TypeScript.
+*Tailwind CSS (utility classes + small custom styles in app/globals.css)
+*Lightweight components (no heavy UI lib), accessible HTML semantics.
+
+Getting Started
+
+# 1) Clone
+git clone https://github.com/<YOUR_GITHUB_USERNAME>/manageit-dashboard.git
 cd manageit-dashboard
+
+# 2) Install
 npm install
+
+# 3) Run dev server
 npm run dev
 # open http://localhost:3000
+

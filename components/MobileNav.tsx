@@ -11,20 +11,22 @@ type Props = {
   nav: NavItem[];
 };
 
-export default function MobileNav(props: Props) {
-  const { open, nav } = props; // note: we don't destructure setOpen here
+export default function MobileNav({ open, setOpen, nav }: Props) {
   const pathname = usePathname();
-  const closeMenu = () => props.setOpen(false);
+  if (!open) return null;
 
   return (
-    <div id="mobile-menu" hidden={!open} className="md:hidden container mt-2">
-      <nav aria-label="Mobile" className="card px-3 py-3">
+    <div className="container mt-2">
+      <nav
+        aria-label="Mobile"
+        className="card px-3 py-3 max-h-[60vh] overflow-y-auto"
+      >
         <ul className="flex flex-col">
           {nav.map((item) => (
             <li key={item.href}>
               <Link
                 href={item.href}
-                onClick={closeMenu}
+                onClick={() => setOpen(false)}
                 aria-current={pathname === item.href ? 'page' : undefined}
                 className="block px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/10"
               >
