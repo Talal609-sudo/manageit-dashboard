@@ -1,9 +1,12 @@
 # ManageIt — Admin Dashboard
 
+ A colorful, accessible, mobile-first admin dashboard built with Next.js, React, TypeScript, and Tailwind CSS.
+
 ## Live Demo
 
 
 ## Preview
+
 ![Desktop](screenshots/preview-desktop.png)
 ![Mobile 1](screenshots/preview-mobile-1.png)
 ![Mobile 2](screenshots/preview-mobile-2.png)
