@@ -4,6 +4,7 @@
 
 ## Live Demo
 
+ https://manageit-dashboard.vercel.app/
 
 ## Preview
 
