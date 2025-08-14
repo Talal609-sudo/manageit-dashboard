@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base theme tokens */
+:root {
+  --bg: theme(colors.brand.bg);
+  --panel: theme(colors.brand.panel);
+  --text: #171719;
+  --muted: #6E757C;
+}
+/* Dark theme */
+:root.dark {
+  --bg: #0B0C0F;
+  --panel: #0F1115;
+  --text: #EDEEF0;
+  --muted: #9AA0A6;
+}
+html, body {
+  @apply h-full;
+  background: var(--bg);
+  color: var(--text);
+}
+/* Focus ring for a11y */
+:where(a,button,[role="button"],input,select,textarea):focus-visible {
+  outline: 3px solid theme(colors.brand.indigo);
+  outline-offset: 2px;
+  border-radius: .5rem;
+}
+.container {
+  @apply max-w-6xl mx-auto px-4;
+}
+.card {
+  @apply rounded-2xl bg-white dark:bg-[color:var(--panel)] shadow-soft ring-1 ring-brand-border;
+}
+.btn {
+  @apply inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium transition;
+}
+.btn-primary {
+  @apply bg-brand.indigo text-white hover:bg-indigo-600;
+}
+.btn-ghost {
+  @apply bg-transparent text-[color:var(--text)] hover:bg-black/5 dark:hover:bg-white/10;
+}
+.badge {
+  @apply inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold;
+}
+/* Table */
+.table {
+  @apply w-full text-sm;
+}
+.table thead th {
+  @apply text-left text-[color:var(--muted)] font-medium bg-black/5 dark:bg-white/5 px-3 py-2;
+}
+.table tbody td {
+  @apply px-3 py-2;
+}
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  width: auto;
+  height: auto;
+  @apply z-50 bg-white text-black rounded-lg px-3 py-2;
+}
