@@ -57,7 +57,7 @@ export default function CustomersPage() {
           })}
         </div>
 
-        <div className="grow min-w-[240px]">
+        <div className="grow min-w-0 sm:min-w-[240px]">
           <input
             className="w-full rounded-xl border border-brand-border px-3 py-2 bg-white dark:bg-[color:var(--panel)]"
             placeholder="Search customers…"

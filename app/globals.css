@@ -1,6 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* Responsive guardrails */
+*,*::before,*::after { box-sizing: border-box; }
+img,video,svg,canvas { max-width: 100%; height: auto; display: block; }
+html { height: auto; }
+body { min-height: 100dvh; overflow-x: hidden; }
+.text-wrap { overflow-wrap: anywhere; word-break: break-word; }
 
 :root {
   --bg: theme('colors.brand.bg');

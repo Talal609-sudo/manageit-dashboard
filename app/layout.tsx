@@ -1,6 +1,7 @@
 // app/layout.tsx
 import type { Metadata } from 'next';
 import './globals.css';
+export const viewport = { width: 'device-width', initialScale: 1 };
 import Header from '@/components/Header';
 
 export const metadata: Metadata = {

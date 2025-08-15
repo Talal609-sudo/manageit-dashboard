@@ -136,7 +136,7 @@ export default function OrdersPage() {
         </select>
 
         {/* Search */}
-        <div className="grow min-w-[200px]">
+        <div className="grow min-w-0 sm:min-w-[200px]">
           <input
             className="w-full rounded-xl border border-brand-border px-3 py-2 bg-white dark:bg-[color:var(--panel)]"
             placeholder="Search by order # or customer…"
